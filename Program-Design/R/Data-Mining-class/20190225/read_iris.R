@@ -1,0 +1,5 @@
+setwd("C:/Users/asia_H103st/Documents/R")
+getwd()
+X_train = read.table("iris_train.csv",sep = ",",header = TRUE)
+X_test = read.table("iris_test.csv" , sep="," , header = TRUE)
+print(X_train)

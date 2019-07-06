@@ -1,0 +1,10 @@
+library("Rfacebook")
+token="EAAeQsjghntcBADhZCkXg3E9swCCWvWUVeXAMEahPpThjKZAfKLRzXjAZCwcvAS4xPw74IeUcVDnJZCs7CzPFkdROYeQZAVJgMdApF1rBG8loZBC88ROsie3ZCbCvsZCd3nNGLu7ACWoZBjASf3FJpp0gZAx1Dol1niN96C4r3ZCYqy0Q3JFjPdiVbEalFmfZAwhG7r8Ve5s8eNNIigZDZD"
+me = getUsers("me", token, private_info=TRUE)
+fix(me)
+print(me)
+fbpage = getPage(page="2502632599805214",token,n=10)
+str(fbpage)
+print(fbpage)
+fix(fbpage)
+view(fbpage)
