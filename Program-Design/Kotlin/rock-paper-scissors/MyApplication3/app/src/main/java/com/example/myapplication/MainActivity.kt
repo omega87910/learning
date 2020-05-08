@@ -9,43 +9,45 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         button.setOnClickListener {
-            start("scissor")
-        }
-        button2.setOnClickListener {
-            start("stone")
-        }
-        button3.setOnClickListener {
-            start("paper")
+            if (editText.text.isEmpty()){
+                textView.text = "未輸入名字"
+            }else {
+                when {
+                    radioButton.isChecked -> start("scissor")
+                    radioButton2.isChecked -> start("stone")
+                    radioButton3.isChecked -> start("paper")
+                }
+            }
         }
     }
-    fun start(chosen:String){
+    private fun start(chosen:String){
+        textView.text = ""
         val arr:Array<String> = arrayOf("scissor","stone","paper")
-        textView.text = "你選擇${chosen}"
+        val username = editText.text
         val pc = arr.random()
-        textView2.text = "電腦選擇${pc}"
-        val lose = "你輸了"
-        val win = "你贏了"
-        val same = "平手"
+        textView_name.text = String.format("%s\n${username}",textView_name.text)
+        textView_comGesture.text = String.format("%s\n${pc}",textView_comGesture.text)
+        textView_uGesture.text = String.format("%s\n${chosen}",textView_uGesture.text)
         if (chosen == pc){
-            textView3.text= same
+            textView_winner.text = String.format("%s\nNone",textView_winner.text)
         }else{
             if(chosen == "scissor"){
                 if(pc == "stone"){
-                    textView3.text = lose
+                    textView_winner.text = String.format("%s\nCom",textView_winner.text)
                 }else{
-                    textView3.text = win
+                    textView_winner.text = String.format("%s\n${username}",textView_winner.text)
                 }
             }else if (chosen == "stone"){
                 if(pc == "paper"){
-                    textView3.text = lose
+                    textView_winner.text = String.format("%s\nCom",textView_winner.text)
                 }else{
-                    textView3.text = win
+                    textView_winner.text = String.format("%s\n${username}",textView_winner.text)
                 }
             }else if(chosen == "paper"){
                 if(pc == "scissor"){
-                    textView3.text = lose
+                    textView_winner.text = String.format("%s\nCom",textView_winner.text)
                 }else{
-                    textView3.text = win
+                    textView_winner.text = String.format("%s\n${username}",textView_winner.text)
                 }
             }
         }
